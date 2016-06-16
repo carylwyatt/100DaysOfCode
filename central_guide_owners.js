@@ -9,10 +9,29 @@ var lgAPI = "http://lgapi.libapps.com/1.1/guides/?site_id=103&key=83d416dc1ba38e
 
 function displayProfile(data){
 
-    $.each(data, function(i, guide) {
-       $('#guideTable').append('<tr><td>' + guide.name + '</td><td>' + guide.subjects.name + '</td><td>' + guide.owner.first_name + ' ' + guide.owner.last_name + '</td></tr>')
-       });
- 
+    $.each(data, function(i, guide){
+      
+      var guidesList;
+      
+      guidesList += '<tr><td>';
+      guidesList += guide.name;
+      
+      if(guide.subjects) {
+        guidesList += '</td><td>';
+        guidesList += guide.subjects[0].name;
+        guidesList += '</td><td>';
+      } else {
+        guidesList += '</td><td>&nbsp;</td><td>'
+      }
+      
+      guidesList += guide.owner.first_name;
+      guidesList += ' ';
+      guidesList += guide.owner.last_name;
+      guidesList += '</td></tr>';
+      
+      $('#guideTable').append(guidesList);
+      
+    });
 }
 
 //3. Load
