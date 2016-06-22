@@ -5,8 +5,10 @@ var express = require('express'),
 
 var app = express();
 
+debugger;
+
 app.get('/', function(req, res){
-	res.send("<h1>I love treehouse!</h1>")
+	res.send("<h1>I am loving treehouse!</h1>")
 });
 
 app.get('/blog', function(req, res){
