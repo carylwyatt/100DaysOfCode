@@ -8,8 +8,8 @@ borrowed from https://github.com/heaversm/google-custom-form
 
 
 <form id="input-form" action="" method="POST" target="no-target">
-    <input id="input-q1" type="checkbox" name="q1" value="Drop-In">5-Minute Librarian Drop-In<br>
-    <input id="input-q2" type="checkbox" name="q2" value="Quick Intro">20-Minute Quick Intro to Library Resources<br>
+    <input id="input-q1" type="checkbox" name="q1" value="check">5-Minute Librarian Drop-In<br>
+    <input id="input-q2" type="checkbox" name="q2" value="check">20-Minute Quick Intro to Library Resources<br>
 
  
   <button id="form-submit" type="submit">SUBMIT</button>
@@ -18,6 +18,19 @@ borrowed from https://github.com/heaversm/google-custom-form
 <p id="input-feedback"></p>
 
 <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
+
+
+<!--
+================
+
+possibly need to write 
+
+if (input === checked) {
+    add to URL response
+} 
+
+================
+-->    
 
 <script>
     $('#input-form').one('submit',function(){
