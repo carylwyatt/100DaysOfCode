@@ -1,0 +1,13 @@
+<style>
+
+input#ebscohostsearchtext {
+width: 80%;
+}
+
+#onlysearchbutton.btn {
+  background-color: #006648;
+  color: white;
+  transform: translateY(-2px);
+}
+
+</style>
