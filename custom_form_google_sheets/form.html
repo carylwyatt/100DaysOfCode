@@ -1,6 +1,7 @@
 <!--
 ==========================================
 borrowed from https://github.com/heaversm/google-custom-form
+reworked for Ivy Tech Lawrence Library ILI Request Form
 ==========================================
 
 -->
@@ -12,6 +13,16 @@ borrowed from https://github.com/heaversm/google-custom-form
   <input id="input-q2" type="checkbox"  value="Add to Cart" name="entry.2013278331">20-Minute Quick Intro to Library Resources<br>
   <input type="checkbox" value="Add to Cart" name="entry.483319453">Introduction to Research<br>
   <input type="checkbox" value="Add to Cart" name="entry.1736637257">Library Orientation<br>
+   <input type="checkbox" value="Add to Cart" name="entry.1383517523">Subject-Specific Research<br>
+  <input type="checkbox" value="Add to Cart" name="entry.518912775">Annotated Bibliography<br>
+    <input type="checkbox" value="Add to Cart" name="entry.420046994">Citation and Formatting<br>
+  <input type="checkbox" value="Add to Cart" name="entry.1309495558">NoodleTools<br>
+  Instructor's Name<input type="text" value="" name="entry.1063659628"><br>
+  Instructor's Email<input type="text" value="" name="entry.1661499415"><br>
+  Course Name/Number<input type="text" value="" name="entry.632794592"><br>
+  Class Time<input type="text" value="" name="entry.1567052872"><br>
+  Requested Date<input type="text" value="" name="entry.2061397332"><br>
+  Number of Students<input type="text" value="" name="entry.1921107125"><br>
   <button id="form-submit" type="submit">SUBMIT</button>
 </form>
 
@@ -22,38 +33,18 @@ borrowed from https://github.com/heaversm/google-custom-form
 
 
 <script>
-//this works a little better than the above script... just need to add the google url business to it... CHECK!
-//then figure out how to if (checked) {add name/value pair to URL}
 
- //   function isChecked(){
- //     var str = $( "form" ).serialize().replace(/\+/g,'%20');
- //     console.log(str);
- //   }
-    
-    var isChecked = $( "input[type='checkbox']" ).serialize().replace(/\+/g,'%20');
-    
- //   $( "input[type='checkbox']" ).on( "click", isChecked );
+//For some reason, this checks the checkboxes, but the textboxes submit themselves without needing to check for them being filled out (???)
+
+    var isChecked = $( "input[type='checkbox']" ).serialize().replace('/\+/g','%20');
+
     
     $('form').one('submit',function(){
       var baseURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfVHcNVMCDQeWpC2ah-nBMamu0rlBQ5xQTYKtbr59V3Hnt0kA/formResponse';
       var submitRef = '&submit=3483183719070467546';
       var submitURL = (baseURL + '?' + isChecked + submitRef);
+      console.log(submitURL);
       $(this)[0].action = submitURL;
+      $('#input-feedback').text('Thank You! To submit another form, change the class time and date above and hit Submit again.');
     });
 </script>
-
-<!-- <script>
-    $('#input-form').one('submit',function(){
-        var inputq1 = encodeURIComponent($('#input-q1').val());
-        var inputq2 = encodeURIComponent($('#input-q2').val());
-        var q1ID = "entry.1872902617";
-        var q2ID = "entry.2013278331";
-        var baseURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfVHcNVMCDQeWpC2ah-nBMamu0rlBQ5xQTYKtbr59V3Hnt0kA/formResponse?';
-        var submitRef = '&submit=3483183719070467546';
-        var submitURL = (baseURL + q1ID + "=" + inputq1 + "&" + q2ID + "=" + inputq2 + submitRef);
-        console.log(submitURL);
-        $(this)[0].action=submitURL;
-        $('#input-feedback').text('Thank You!');
-    });
-</script>
--->
